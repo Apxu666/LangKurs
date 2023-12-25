@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         note.descT = textDesc.text.toString()
 
         if (!TextUtils.isEmpty(note.openT) && !TextUtils.isEmpty(note.closeT)) {
-            val newNotes = _db.child(Statics.FIREBASE_TASK).push()
+            val newNotes = _db.child("note").push()
             note.noteId = newNotes.key
 
             newNotes.setValue(note)

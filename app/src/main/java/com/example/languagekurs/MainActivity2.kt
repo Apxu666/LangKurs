@@ -28,15 +28,18 @@ class MainActivity2 : AppCompatActivity() {
             val noteRef = database.child("note")
             noteRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val openValue = dataSnapshot.child("openT").getValue(String::class.java)
-                    val closeValue = dataSnapshot.child("closeT").getValue(String::class.java)
-                    val descValue = dataSnapshot.child("descT").getValue(String::class.java)
+                    for (child in dataSnapshot.children) {
+                        val openValue = child.child("openT").getValue(String::class.java)
+                        val closeValue = child.child("closeT").getValue(String::class.java)
+                        val descValue = child.child("descT").getValue(String::class.java)
 
-                    openT.text = openValue
-                    closeT.text = closeValue
-                    descT.text = descValue
+                        openT.text = openValue
+                        closeT.text = closeValue
+                        descT.text = descValue
 
-                    enterText.text.clear()
+                        enterText.text.clear()
+                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
