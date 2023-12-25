@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#92B7DC"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/textdesc"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@string/description"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColorHint="#37474F"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textclose"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/closeT"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColorHint="#37474F"
+        app:layout_constraintBottom_toTopOf="@+id/textdesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/textopen"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints=" "
+        android:ems="10"
+        android:hint="@string/openT"
+        android:inputType="textPersonName"
+        android:textColorHint="#37474F"
+        app:layout_constraintBottom_toTopOf="@+id/textclose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#233087"
+        android:text="@string/buttonAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textdesc" />
+
+    <Button
+        android:id="@+id/buttonShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#233087"
+        android:text="@string/AllNotes"
+        android:onClick="showNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSave" />
+</androidx.constraintlayout.widget.ConstraintLayout>

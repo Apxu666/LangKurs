@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "955362754983",
+    "firebase_url": "https://languagekurs-b080e-default-rtdb.firebaseio.com",
+    "project_id": "languagekurs-b080e",
+    "storage_bucket": "languagekurs-b080e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955362754983:android:f7fc475691eb2df589b682",
+        "android_client_info": {
+          "package_name": "com.example.languagekurs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTDCQ0v3HZyzCObMEcfsYU2iTNiMuacWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
