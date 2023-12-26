@@ -18,80 +18,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enterText"
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/entertext"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColorHint="#37474F"
-        app:layout_constraintBottom_toTopOf="@+id/openView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/openView"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="8dp"
-        android:hint="@string/opentext"
-        android:textColorHint="#37474F"
-        app:layout_constraintBottom_toTopOf="@+id/closeView"
-        app:layout_constraintEnd_toEndOf="@+id/buttonBack"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/closeView"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:hint="@string/closetext"
-        android:textColorHint="#37474F"
+    <ScrollView
+        android:id="@+id/field"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/descView"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/desctext"
-        android:textColorHint="#37474F"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/closeView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/btnShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/closeView"
-        app:layout_constraintEnd_toEndOf="@+id/closeView"
-        app:layout_constraintTop_toTopOf="@+id/closeView"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        tools:ignore="ImageContrastCheck"
-        android:contentDescription="@string/todo2" />
-
-    <Button
-        android:id="@+id/readnote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#233087"
-        android:text="@string/readnote"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterText" />
+            <TextView
+                android:id="@+id/notes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/note"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

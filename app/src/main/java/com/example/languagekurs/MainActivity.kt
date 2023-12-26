@@ -12,41 +12,40 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
-    lateinit var _db: DatabaseReference
-
+    private var counter = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        _db = FirebaseDatabase.getInstance().reference
 
+        val _db = FirebaseDatabase.getInstance()
+        val refDb = _db.getReference("note")
         val buttonSave : Button = findViewById(R.id.buttonSave)
+
         buttonSave.setOnClickListener {
-            addNote()
-        }
-    }
 
-    fun addNote(){
-        val textOpen : EditText = findViewById(R.id.textopen)
-        val textClose : EditText = findViewById(R.id.textclose)
-        val textDesc : EditText = findViewById(R.id.textdesc)
-        val note = Notes.create()
+            val textOpen : EditText = findViewById(R.id.textopen)
+            val textClose : EditText = findViewById(R.id.textclose)
+            val textDesc : EditText = findViewById(R.id.textdesc)
 
-        note.openT = textOpen.text.toString()
-        note.closeT = textClose.text.toString()
-        note.descT = textDesc.text.toString()
+            val textO = textOpen.text.toString()
+            val textC = textClose.text.toString()
+            val textD = textDesc.text.toString()
 
-        if (!TextUtils.isEmpty(note.openT) && !TextUtils.isEmpty(note.closeT)) {
-            val newNotes = _db.child("note").push()
-            note.noteId = newNotes.key
+            if (!TextUtils.isEmpty(textO) && !TextUtils.isEmpty(textC)) {
+                val newNotes = refDb.child("rec$counter")
+                newNotes.child("openT").setValue(textO)
+                newNotes.child("closeT").setValue(textC)
+                newNotes.child("descT").setValue(textD)
 
-            newNotes.setValue(note)
-            textOpen.setText("")
-            textClose.setText("")
-            textDesc.setText("")
+                textOpen.setText("")
+                textClose.setText("")
+                textDesc.setText("")
 
-            Toast.makeText(this, "Запись добавлена успешно " + note.noteId, Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Пустое поле", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Запись добавлена успешно " + counter, Toast.LENGTH_SHORT).show()
+                counter++
+            } else {
+                Toast.makeText(this, "Пустое поле", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

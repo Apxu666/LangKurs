@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.google.firebase.database.*
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.ValueEventListener
 
 class MainActivity2 : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -16,45 +14,32 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val enterText : EditText = findViewById(R.id.enterText)
-        val openT : TextView = findViewById(R.id.openView)
-        val closeT : TextView = findViewById(R.id.closeView)
-        val descT : TextView = findViewById(R.id.descView)
-        val readNote : Button = findViewById(R.id.readnote)
-        val imageButton : ImageButton = findViewById(R.id.btnShow)
+        val note: TextView = findViewById(R.id.notes)
 
-        readNote.setOnClickListener {
-            val database = FirebaseDatabase.getInstance().reference
-            val noteRef = database.child("note")
-            noteRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (child in dataSnapshot.children) {
-                        val openValue = child.child("openT").getValue(String::class.java)
-                        val closeValue = child.child("closeT").getValue(String::class.java)
-                        val descValue = child.child("descT").getValue(String::class.java)
+        val _db = FirebaseDatabase.getInstance()
+        val refDb = _db.getReference("note")
 
-                        openT.text = openValue
-                        closeT.text = closeValue
-                        descT.text = descValue
+        refDb.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val stringBuilder = StringBuilder()
+                for (rec in snapshot.children){
+                    val opT = rec.child("openT").getValue(String::class.java)
+                    val clT = rec.child("closeT").getValue(String::class.java)
+                    val deT = rec.child("descT").getValue(String::class.java)
 
-                        enterText.text.clear()
-                    }
-
+                    stringBuilder.append("Открытый текст: $opT\n")
+                    stringBuilder.append("Закрытый текст: $clT\n")
+                    stringBuilder.append("Описание: $deT\n")
+                    stringBuilder.append("\n")
                 }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(this@MainActivity2, "Ошибка", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }
-
-        imageButton.setOnClickListener {
-            if (closeT.visibility == View.VISIBLE) {
-                closeT.visibility = View.INVISIBLE
-            } else {
-                closeT.visibility = View.VISIBLE
+                val _dbValues = stringBuilder.toString()
+                note.text = _dbValues
             }
-        }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@MainActivity2, "Ошибка", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     fun buttonaddNote(view: View) {

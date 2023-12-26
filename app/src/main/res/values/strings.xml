@@ -6,15 +6,5 @@
     <string name="buttonAdd">Добавить запись</string>
     <string name="AllNotes">Посмотреть записи</string>
     <string name="button_addNote">Добавить запись</string>
-    <string name="hiddenText">Скрытый текст</string>
-    <string name="unhiddenText">Открытый текст</string>
-    <string name="descript">Описание</string>
-    <string name="todo">TODO</string>
-    <string name="closetext">Закрытый текст</string>
-    <string name="desctext">Описание</string>
-    <string name="opentext">Открытый текст</string>
-    <string name="entertext">Введите название записи</string>
-    <string name="todo2">TODO</string>
-    <string name="readnote">Посмотреть запись</string>
-    <string name="numbnote">Номер записи</string>
+    <string name="note">Запись</string>
 </resources>
